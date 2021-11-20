@@ -1,7 +1,11 @@
 on: [pull_request, push]
 jobs:
-  uwu:
+  test_client:
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./client
     steps:
-      - name: uwu
-        run: echo uwu and owo
+      - name: Install Packages
+        run: npm i
+      - name: Build
+        run: npm run build
