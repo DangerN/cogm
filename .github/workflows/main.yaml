@@ -1,5 +1,4 @@
 name: Main
-description: the main aciton?
 on: [pull_request, push]
 jobs:
   test_client:
