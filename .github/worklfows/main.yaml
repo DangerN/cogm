@@ -1,10 +1,4 @@
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: [pull_request, push]
 jobs:
   uwu:
     runs-on: ubuntu-latest
