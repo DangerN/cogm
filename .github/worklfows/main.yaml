@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: uwu
-        run: echo uwu
+        run: echo uwu and owo
