@@ -5,6 +5,10 @@ jobs:
     env:
       working-directory: ./client
     steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
       - name: Install Packages
         run: npm i
       - name: Build
