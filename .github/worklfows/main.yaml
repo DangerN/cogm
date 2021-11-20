@@ -1,0 +1,13 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  uwu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: uwu
+        run: echo uwu
