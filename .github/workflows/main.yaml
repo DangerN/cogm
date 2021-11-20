@@ -1,14 +1,20 @@
+name: Main
+description: the main aciton?
 on: [pull_request, push]
 jobs:
   test_client:
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./client
+    strategy:
+      matrix:
+        node-vesrion: [14.x]
+    defaults:
+      run:
+        working-directory: ./client
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: ${{ matrix.node-version }}
       - name: Install Packages
         run: npm i
       - name: Build
