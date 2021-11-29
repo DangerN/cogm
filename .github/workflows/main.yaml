@@ -1,5 +1,9 @@
 name: Main
-on: [pull_request, push]
+on:
+  pull_request:
+  push:
+    branches:
+      - master
 jobs:
   test_client:
     runs-on: ubuntu-latest
@@ -18,3 +22,9 @@ jobs:
         run: npm i
       - name: Build
         run: npm run build
+      - name: Deploy
+        run: |
+          aws s3 sync ./build s3://${{ secrets.BUCKET_NAME }} --acl public-read --delete
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
