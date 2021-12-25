@@ -10,6 +10,7 @@ jobs:
   deploy:
     name: Deploy
     uses: DangerN/cogm/.github/workflows/deploy.yaml@main
+    needs: test
     with:
       env: prod
     secrets:
