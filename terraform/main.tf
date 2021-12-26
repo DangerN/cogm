@@ -49,3 +49,36 @@ data "aws_iam_policy_document" "public-bucket-access" {
     ]
   }
 }
+
+data "aws_iam_policy_document" "documents-bucket-access" {
+  statement {
+    sid = "PublicBucketAccess"
+    principals {
+      identifiers = ["*"]
+      type        = "AWS"
+    }
+    actions = [
+      "s3:GetObject"
+    ]
+
+    resources = [
+      aws_s3_bucket.documents.arn,
+      "${aws_s3_bucket.documents.arn}/*"
+    ]
+  }
+}
+
+
+resource "aws_s3_bucket" "documents" {
+  bucket = var.document-bucket-name
+  acl = "public-read"
+
+  tags = {
+    "Project" = var.site-name
+  }
+}
+
+resource "aws_s3_bucket_policy" "documents" {
+  bucket = aws_s3_bucket.documents.id
+  policy = data.aws_iam_policy_document.documents-bucket-access.json
+}
