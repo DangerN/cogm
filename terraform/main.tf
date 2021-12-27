@@ -73,6 +73,11 @@ resource "aws_s3_bucket" "documents" {
   bucket = var.document-bucket-name
   acl = "public-read"
 
+  cors_rule {
+    allowed_methods = ["GET"]
+    allowed_origins = ["*"]
+  }
+
   tags = {
     "Project" = var.site-name
   }

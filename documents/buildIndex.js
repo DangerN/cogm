@@ -19,11 +19,9 @@ dir.forEach(file => {
                 .replace(/\.md$/, '')
                 .replace(/ (\S)/g, upCase)
                 .replace(/^\S/g, upCase),
-            'link': `${process.argv[2]}/${file}/${f}`
+            'path': `${file}/${f}`
         })
     })
 })
 
-
-
-
+fs.writeFileSync(`${__dirname}/documents/index.json`, JSON.stringify(index))
