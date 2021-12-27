@@ -41,6 +41,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Build Index
+      run: node documents/buildIndex.js https://${{ secrets.DOCUMENTS_BUCKET_NAME }}.s3.amazonaws.com
     - name: Deploy
       run: aws s3 sync ./documents s3://${{ secrets.DOCUMENTS_BUCKET_NAME }} --acl public-read --delete
       env:
