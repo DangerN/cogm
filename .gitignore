@@ -1,4 +1,4 @@
 .idea
 *.tfstate*
 **/.terraform
-documents/buildIndex.js
+documents/index.json
