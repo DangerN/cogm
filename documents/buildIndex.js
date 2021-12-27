@@ -24,4 +24,4 @@ dir.forEach(file => {
     })
 })
 
-fs.writeFileSync(`${__dirname}/documents/index.json`, JSON.stringify(index))
+fs.writeFileSync(`${__dirname}/index.json`, JSON.stringify(index))
