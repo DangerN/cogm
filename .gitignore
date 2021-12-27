@@ -2,3 +2,4 @@
 *.tfstate*
 **/.terraform
 documents/index.json
+node_modules
