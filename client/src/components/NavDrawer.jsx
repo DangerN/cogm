@@ -13,25 +13,23 @@ function MailIcon() {
 
 const NavDrawer = ({documentIndex, setMarkdownValue}) => {
     const setMarkdown = async documentPath => {
-        console.log(documentPath)
         const markdown = (await api.getDocument(documentPath)).data
-        console.log(markdown)
         setMarkdownValue(markdown)
     }
     return (
         <div>
             <Toolbar />
             <Divider />
-            <List>
-                {documentIndex.map((doc, index) => (
-                    <ListItem button key={doc.title} onClick={(e)=>setMarkdown(doc.path, e)}>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={doc.title} />
-                    </ListItem>
-                ))}
-            </List>
+                <List>
+                    {documentIndex.map((doc, index) => (
+                        <ListItem button key={doc.title} onClick={(e)=>setMarkdown(doc.path, e)}>
+                            <ListItemIcon>
+                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                            </ListItemIcon>
+                            <ListItemText primary={doc.title} />
+                        </ListItem>
+                    ))}
+                </List>
             <Divider />
         </div>
     )
