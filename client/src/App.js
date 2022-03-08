@@ -17,7 +17,7 @@ function App() {
     const drawerWidth = 280
     const [ documentIndex, setDocumentIndex ] = useState([])
     const [mobileOpen, setMobileOpen] = useState(false);
-    const [ markdownValue, setMarkdownValue ] = useState('Under Construction')
+    const [ markdownValue, setMarkdownValue ] = useState('Loading...')
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -25,8 +25,16 @@ function App() {
 
     useEffect(() => {
         (async () => {
+            // 'index.json' is created as part of the build process.
             const doc = await api.getDocument('index.json')
             setDocumentIndex(doc.data)
+        })()
+    }, [])
+
+    useEffect(() => {
+        (async () => {
+            const markdown = (await api.getDocument('core/god_machine.md')).data
+            setMarkdownValue(markdown)
         })()
     }, [])
 
